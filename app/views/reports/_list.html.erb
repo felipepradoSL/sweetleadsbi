@@ -1,0 +1,62 @@
+<table>
+  <thead>
+    <tr>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Produto</th>
+        <th>Bing</th>
+        <th>Google</th>
+        <th>Hotmart</th>
+        <th>ROI</th>
+    </tr>
+    <tr class="grey lighten-2 show">
+      <td class="peso-5 purple-text">Total</td>
+      <td>-</td>
+      <td>-</td>
+      <td id="total_bing" class="blue-text"></td>
+      <td id="total_google" class="blue-text"></td>
+      <td id="total_hotmart" class="blue-text"></td>
+      <td id="roi_hotmart" class="blue-text"></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.date %></td>
+        <td><%= "#{report.hotmart_purchase_status}" %> </td>
+        <td><%= "#{report.produto}" %> </td>
+        <td class="bing"><%= (report.bing_cost.to_f).round(2) %></td>
+        <td class="google"><%= (report.google_cost.to_f).round(2) %></td>
+        <td class="hotmart"><%= (report.hotmart_commission_value.to_f).round(2) %></td>
+        <td class="roi"><%= (report.bing_cost.to_f+report.google_cost.to_f) == 0 ? "infinite" : (report.hotmart_commission_value.to_f/(report.bing_cost.to_f+report.google_cost.to_f)).round(2) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<script type="text/javascript">
+  $(document).click(function (el) {
+    var total_bing = 0.0
+    var total_google = 0.0
+    var total_hotmart = 0.0
+    $("td.bing:not(:hidden)").each(function(){
+      total_bing += parseFloat($(this).text().replace(",","."));
+    });
+    $("td.google:not(:hidden)").each(function(){
+      total_google += parseFloat($(this).text().replace(",","."));
+    });
+    $("td.hotmart:not(:hidden)").each(function(){
+      total_hotmart += parseFloat($(this).text().replace(",","."));
+    });
+    $("#total_bing").text(checaValor(total_bing.toFixed(2)+''));
+    $("#total_google").text(checaValor(total_google.toFixed(2)+''));
+    $("#total_hotmart").text(checaValor(total_hotmart.toFixed(2)+''));
+    $("#roi_hotmart").text(checaValor((total_hotmart/(total_google+total_bing)).toFixed(2)+''));
+    $(".show").show();
+  });
+
+  $(document).trigger( "click" );
+
+</script>

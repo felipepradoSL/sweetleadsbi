@@ -1,0 +1,39 @@
+class AddEduzzToReports < ActiveRecord::Migration[5.2]
+  def change
+		add_column :reports, :eduzz_sale_id, :string
+		add_column :reports, :eduzz_contract_id, :string
+		add_column :reports, :eduzz_date_create, :string
+		add_column :reports, :eduzz_date_payment, :string
+		add_column :reports, :eduzz_sale_status, :string
+		add_column :reports, :eduzz_sale_item_id, :string
+		add_column :reports, :eduzz_sale_item_discount, :decimal
+		add_column :reports, :eduzz_client_first_access_id, :string
+		add_column :reports, :eduzz_sale_recuperacao, :string
+		add_column :reports, :eduzz_sale_funil_infinito, :string
+		add_column :reports, :eduzz_sale_amount_win, :decimal
+		add_column :reports, :eduzz_sale_net_gain, :decimal
+		add_column :reports, :eduzz_sale_coop, :decimal
+		add_column :reports, :eduzz_sale_partner, :decimal
+		add_column :reports, :eduzz_sale_fee, :decimal
+		add_column :reports, :eduzz_sale_others, :string
+		add_column :reports, :eduzz_sale_total, :decimal
+		add_column :reports, :eduzz_sale_payment_method, :string
+		add_column :reports, :eduzz_client_id, :string
+		add_column :reports, :eduzz_client_name, :string
+		add_column :reports, :eduzz_client_email, :string
+		add_column :reports, :eduzz_client_document, :string
+		add_column :reports, :eduzz_client_cel, :string
+		add_column :reports, :eduzz_producer_id, :string
+		add_column :reports, :eduzz_affiliate_id, :string
+		add_column :reports, :eduzz_producer_name, :string
+		add_column :reports, :eduzz_affiliate_name, :string
+		add_column :reports, :eduzz_utm_source, :string
+		add_column :reports, :eduzz_utm_campaign, :string
+		add_column :reports, :eduzz_utm_medium, :string
+		add_column :reports, :eduzz_utm_content, :string
+		add_column :reports, :eduzz_tracker, :string
+		add_column :reports, :eduzz_content_id, :string
+		add_column :reports, :eduzz_content_title, :string
+		add_column :reports, :eduzz_content_type_id, :string
+  end
+end

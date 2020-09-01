@@ -1,0 +1,44 @@
+<table>
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Product</th>
+			<th>Clicks</th>
+			<th>Impressions</th>
+			<th>Cost</th>
+			<th>Conversions</th>
+			<th>Conversions value</th>
+			<th>Results</th>
+			<th>Status</th>
+			<th>Payment_type</th>
+			<th>Cms Aff</th>
+			<th>SRC</th>
+			<th>Original Offer Price</th>
+			<th>Producer Name</th>
+			<th>Refusal Reason</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @leads.each do |lead| %>
+		<tr>
+			<td><%= lead.date %></td>
+			<td><%= lead.product %></td>
+			<td><%= lead.clicks %></td>
+			<td><%= lead.impressions %></td>
+			<td><%= lead.cost %></td>
+			<td><%= lead.conversions %></td>
+			<td><%= lead.conversions_value %></td>
+			<td><%= lead.results %></td>
+			<td><%= lead.status %></td>
+			<td><%= lead.payment_type %></td>
+			<td><%= lead.cms_aff %></td>
+			<td><%= lead.src %></td>
+			<td><%= lead.original_offer_price %></td>
+			<td><%= lead.producer_name %></td>
+			<td><%= lead.refusal_reason %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+

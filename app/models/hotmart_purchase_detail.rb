@@ -1,0 +1,2 @@
+class HotmartPurchaseDetail < ApplicationRecord
+end

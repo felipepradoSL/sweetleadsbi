@@ -1,0 +1,6 @@
+# encoding: UTF-8
+pt-BR:
+  pergunta:
+    tipos:
+      alternativa: "Alternativa"
+      dissertativa: "Dissertativa"

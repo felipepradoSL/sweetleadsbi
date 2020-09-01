@@ -1,0 +1,95 @@
+<table>
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Affiliate</th>
+      <th>Commission</th>
+      <th>Purchase</th>
+      <th>Offer</th>
+      <th>Enotas</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leads.each do |lead| %>
+    <tr>
+      <td>
+        <strong>Id: </strong> <%= lead.product_id %><br>
+        <strong>Name: </strong> <%= lead.product_name %><br>
+        <strong>Ucode: </strong> <%= lead.product_ucode %><br>
+        <strong>Hascoproduction: </strong> <%= lead.product_hascoproduction %><br>
+        <strong>Subscription: </strong> <%= lead.product_subscription %>
+      </td>
+      <td>
+        <strong>Id: </strong> <%= lead.affiliate_id %><br>
+        <strong>Name: </strong> <%= lead.affiliate_name %><br>
+        <strong>Email: </strong> <%= lead.affiliate_email %><br>
+        <strong>Ucode: </strong> <%= lead.affiliate_ucode %><br>
+        <strong>Locale: </strong> <%= lead.affiliate_locale %>
+      </td>
+      <td>
+        <strong>Value: </strong> <%= lead.commission_value %><br>
+        <strong>Currencycode: </strong> <%= lead.commission_currencycode %>
+      </td>
+      <td>
+        <% unless lead.purchase_transaction.blank? %>
+          <strong>Transaction: </strong> <%= lead.purchase_transaction %><br>
+        <% end %>
+        <% unless lead.purchase_orderdate.blank? %>
+          <strong>Orderdate: </strong> <%= lead.purchase_orderdate %><br>
+        <% end %>
+        <% unless lead.purchase_approveddate.blank? %>
+          <strong>Approveddate: </strong> <%= lead.purchase_approveddate %><br>
+        <% end %>
+        <% unless lead.purchase_paymentengine.blank? %>
+          <strong>Paymentengine: </strong> <%= lead.purchase_paymentengine %><br>
+        <% end %>
+        <% unless lead.purchase_status.blank? %>
+          <strong>Status: </strong> <%= lead.purchase_status %><br>
+        <% end %>
+        <% unless lead.purchase_price.blank? %>
+          <strong>Price: </strong> <%= lead.purchase_price %><br>
+        <% end %>
+        <% unless lead.purchase_currencycode.blank? %>
+          <strong>Currencycode: </strong> <%= lead.purchase_currencycode %><br>
+        <% end %>
+        <% unless lead.purchase_paymenttype.blank? %>
+          <strong>Paymenttype: </strong> <%= lead.purchase_paymenttype %><br>
+        <% end %>
+        <% unless lead.purchase_paymentmethod.blank? %>
+          <strong>Paymentmethod: </strong> <%= lead.purchase_paymentmethod %><br>
+        <% end %>
+        <% unless lead.purchase_recurrencynumber.blank? %>
+          <strong>Recurrencynumber: </strong> <%= lead.purchase_recurrencynumber %><br>
+        <% end %>
+        <% unless lead.purchase_warrantyrefund.blank? %>
+          <strong>Warrantyrefund: </strong> <%= lead.purchase_warrantyrefund %><br>
+        <% end %>
+        <% unless lead.purchase_salesnature.blank? %>
+          <strong>Salesnature: </strong> <%= lead.purchase_salesnature %><br>
+        <% end %>
+        <% unless lead.purchase_source.blank? %>
+          <strong>Source: </strong> <%= lead.purchase_source %><br>
+        <% end %>
+        <% unless lead.purchase_underwarranty.blank? %>
+          <strong>Underwarranty: </strong> <%= lead.purchase_underwarranty %><br>
+        <% end %>
+        <% unless lead.purchase_subscription.blank? %>
+          <strong>Subscription: </strong> <%= lead.purchase_subscription %><br>
+        <% end %>
+        <% unless lead.purchase_installmentsnumber.blank? %>
+          <strong>Installmentsnumber: </strong> <%= lead.purchase_installmentsnumber %>
+        <% end %>
+      </td>
+      <td>
+        <strong>Paymentmode: </strong> <%= lead.offer_paymentmode %><br>
+        <strong>Key: </strong> <%= lead.offer_key %>
+      </td>
+      <td>
+        <%= lead.enotas_status %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+

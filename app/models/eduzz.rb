@@ -1,0 +1,2 @@
+class Eduzz < ApplicationRecord
+end

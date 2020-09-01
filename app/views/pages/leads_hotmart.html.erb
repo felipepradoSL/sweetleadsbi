@@ -1,0 +1,157 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= link_to "XLSX", leads_hotmart_path(format: "xlsx", adwords: true), class: "btn shadow fill-green" %>
+  </div>
+</div>
+<div class="container-fluid">
+	<h5 class="blue-text">Hotmart</h5>
+
+	<div class="scroll-x">
+		
+
+      <table>
+        <thead>
+          <tr>
+            <th> prod</th>
+            <th> prod_name</th>
+            <th> off</th>
+            <th> price</th>
+            <th> aff</th>
+            <th> aff_name</th>
+            <th> email</th>
+            <th> name</th>
+            <th> first_name</th>
+            <th> last_name</th>
+            <th> doc</th>
+            <th> phone_local_code</th>
+            <th> phone_number</th>
+            <th> phone_checkout_local_code</th>
+            <th> phone_checkout_number</th>
+            <th> address</th>
+            <th> address_number</th>
+            <th> address_country</th>
+            <th> address_district</th>
+            <th> address_comp</th>
+            <th> address_city</th>
+            <th> address_state</th>
+            <th> address_zip_code</th>
+            <th> transactionn</th>
+            <th> xcod</th>
+            <th> src</th>
+            <th> status</th>
+            <th> payment_engine</th>
+            <th> payment_type</th>
+            <th> hotkey</th>
+            <th> name_subscription_plan</th>
+            <th> subscriber_code</th>
+            <th> recurrency_period</th>
+            <th> recurrency</th>
+            <th> cms_marketplace</th>
+            <th> cms_vendor</th>
+            <th> cms_aff</th>
+            <th> coupon_code</th>
+            <th> callback_type</th>
+            <th> subscription_status</th>
+            <th> transaction_ext</th>
+            <th> sck</th>
+            <th> purchase_date</th>
+            <th> confirmation_purchase_date</th>
+            <th> billet_url</th>
+            <th> currency_code_from</th>
+            <th> original_offer_price</th>
+            <th> currency</th>
+            <th> billet_barcode</th>
+            <th> producer_name</th>
+            <th> producer_document</th>
+            <th> producer_legal_nature</th>
+            <th> currency_code_from_</th>
+            <th> refusal_reason</th>
+            <th> doc_type</th>
+            <th> full_price</th>
+            <th> warranty_date</th>
+            <th> cms_aff_currency</th>
+            <th> product_support_email</th>
+            <th> amount</th>
+            <th> affiliate</th>
+            <th> productName</th>
+            <th> productUcode</th>
+            <th> productCategory</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @leads.each do |lead| %>
+            <tr>
+              <td><%=  lead.prod %></td>
+              <td><%=  lead.prod_name %></td>
+              <td><%=  lead.off %></td>
+              <td><%=  lead.price %></td>
+              <td><%=  lead.aff %></td>
+              <td><%=  lead.aff_name %></td>
+              <td><%=  lead.email %></td>
+              <td><%=  lead.name %></td>
+              <td><%=  lead.first_name %></td>
+              <td><%=  lead.last_name %></td>
+              <td><%=  lead.doc %></td>
+              <td><%=  lead.phone_local_code %></td>
+              <td><%=  lead.phone_number %></td>
+              <td><%=  lead.phone_checkout_local_code %></td>
+              <td><%=  lead.phone_checkout_number %></td>
+              <td><%=  lead.address %></td>
+              <td><%=  lead.address_number %></td>
+              <td><%=  lead.address_country %></td>
+              <td><%=  lead.address_district %></td>
+              <td><%=  lead.address_comp %></td>
+              <td><%=  lead.address_city %></td>
+              <td><%=  lead.address_state %></td>
+              <td><%=  lead.address_zip_code %></td>
+              <td><%=  lead.transactionn %></td>
+              <td><%=  lead.xcod %></td>
+              <td><%=  lead.src %></td>
+              <td><%=  lead.status %></td>
+              <td><%=  lead.payment_engine %></td>
+              <td><%=  lead.payment_type %></td>
+              <td><%=  lead.hotkey %></td>
+              <td><%=  lead.name_subscription_plan %></td>
+              <td><%=  lead.subscriber_code %></td>
+              <td><%=  lead.recurrency_period %></td>
+              <td><%=  lead.recurrency %></td>
+              <td><%=  lead.cms_marketplace %></td>
+              <td><%=  lead.cms_vendor %></td>
+              <td><%=  lead.cms_aff %></td>
+              <td><%=  lead.coupon_code %></td>
+              <td><%=  lead.callback_type %></td>
+              <td><%=  lead.subscription_status %></td>
+              <td><%=  lead.transaction_ext %></td>
+              <td><%=  lead.sck %></td>
+              <td><%=  lead.purchase_date %></td>
+              <td><%=  lead.confirmation_purchase_date %></td>
+              <td><%=  lead.billet_url %></td>
+              <td><%=  lead.currency_code_from %></td>
+              <td><%=  lead.original_offer_price %></td>
+              <td><%=  lead.currency %></td>
+              <td><%=  lead.billet_barcode %></td>
+              <td><%=  lead.producer_name %></td>
+              <td><%=  lead.producer_document %></td>
+              <td><%=  lead.producer_legal_nature %></td>
+              <td><%=  lead.currency_code_from_ %></td>
+              <td><%=  lead.refusal_reason %></td>
+              <td><%=  lead.doc_type %></td>
+              <td><%=  lead.full_price %></td>
+              <td><%=  lead.warranty_date %></td>
+              <td><%=  lead.cms_aff_currency %></td>
+              <td><%=  lead.product_support_email %></td>
+              <td><%=  lead.amount %></td>
+              <td><%=  lead.affiliate %></td>
+              <td><%=  lead.productName %></td>
+              <td><%=  lead.productUcode %></td>
+              <td><%=  lead.productCategory %></td>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+	</div>
+
+</div>

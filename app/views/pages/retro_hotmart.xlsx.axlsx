@@ -1,0 +1,84 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Retroativo Hotmart") do |sheet|
+
+  title = sheet.styles.add_style( :border=>Axlsx::STYLE_THIN_BORDER,
+                                  :alignment=>{:horizontal => :center},
+                                  :sz => 12,
+                                  :b => true)
+  rows = sheet.styles.add_style(:border=>Axlsx::STYLE_THIN_BORDER)
+
+  # Cabeçalho
+  sheet.add_row ["Retroativo Hotmart - Expotardo: #{I18n.l(Time.now, format: :short)}"], style: [title]
+  sheet.merge_cells("A1:AE")
+
+
+  sheet.add_row [
+                    'product_id',
+                    'product_name',
+                    'product_ucode',
+                    'product_hascoproduction',
+                    'product_subscription',
+                    'enotas_status',
+                    'affiliate_id',
+                    'affiliate_name',
+                    'affiliate_email',
+                    'affiliate_ucode',
+                    'affiliate_locale',
+                    'commission_value',
+                    'commission_currencycode',
+                    'purchase_transaction',
+                    'purchase_orderdate',
+                    'purchase_approveddate',
+                    'purchase_paymentengine',
+                    'purchase_status',
+                    'purchase_price',
+                    'purchase_currencycode',
+                    'purchase_paymenttype',
+                    'purchase_paymentmethod',
+                    'purchase_recurrencynumber',
+                    'purchase_warrantyrefund',
+                    'purchase_salesnature',
+                    'purchase_source',
+                    'purchase_underwarranty',
+                    'purchase_subscription',
+                    'purchase_installmentsnumber',
+                    'offer_paymentmode',
+                    'offer_key',
+                ], style: Array.new(11){ |i| title }
+
+  @leads.each do |lead|
+    sheet.add_row [
+                    lead.product_id,
+                    lead.product_name,
+                    lead.product_ucode,
+                    lead.product_hascoproduction,
+                    lead.product_subscription,
+                    lead.enotas_status,
+                    lead.affiliate_id,
+                    lead.affiliate_name,
+                    lead.affiliate_email,
+                    lead.affiliate_ucode,
+                    lead.affiliate_locale,
+                    lead.commission_value,
+                    lead.commission_currencycode,
+                    lead.purchase_transaction,
+                    (l lead.purchase_orderdate.to_datetime, format: :long),
+                    (l lead.purchase_approveddate.to_datetime, format: :long),
+                    lead.purchase_paymentengine,
+                    lead.purchase_status,
+                    lead.purchase_price,
+                    lead.purchase_currencycode,
+                    lead.purchase_paymenttype,
+                    lead.purchase_paymentmethod,
+                    lead.purchase_recurrencynumber,
+                    lead.purchase_warrantyrefund,
+                    lead.purchase_salesnature,
+                    lead.purchase_source,
+                    lead.purchase_underwarranty,
+                    lead.purchase_subscription,
+                    lead.purchase_installmentsnumber,
+                    lead.offer_paymentmode,
+                    lead.offer_key
+                  ], style: Array.new(11){ |i| rows }
+  end
+end

@@ -1,0 +1,56 @@
+<table class="f12">
+  <thead>
+    <tr>
+        <th>Date</th>
+        <th>Affiliate</th>
+        <th>Produto</th>
+        <th>Payment Method</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Amount Win</th>
+    </tr>
+    <tr class="grey lighten-2 show">
+      <td class="peso-5 purple-text">Total</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td id="total_sale_total" class="blue-text"></td>
+      <td id="total_sale_amount_win" class="blue-text"></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eduzzs.each do |eduzz| %>
+      <tr>
+        <td><%= custom_date eduzz.date_create %></td>
+        <td><%= "#{eduzz.affiliate_name}" %> </td>
+        <td><%= "#{eduzz.content_title}" %> </td>
+        <td><%= "#{eduzz.sale_payment_method}" %> </td>
+        <td><%= "#{eduzz.sale_status}" %> </td>
+        <td class="sale_total"><%= eduzz.sale_total %></td>
+        <td class="sale_amount_win"><%= eduzz.sale_amount_win %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<script type="text/javascript">
+  $(document).click(function (el) {
+    var total_sale_total = 0.0
+    var total_sale_amount_win = 0.0
+    $("td.sale_total:not(:hidden)").each(function(){
+      total_sale_total += parseFloat($(this).text().replace(",","."));
+    });
+    $("td.sale_amount_win:not(:hidden)").each(function(){
+      total_sale_amount_win += parseFloat($(this).text().replace(",","."));
+    });
+    $("#total_sale_total").text(checaValor(total_sale_total.toFixed(2)+''));
+    $("#total_sale_amount_win").text(checaValor(total_sale_amount_win.toFixed(2)+''));
+    $(".show").show();
+  });
+
+  $(document).trigger( "click" );
+
+</script>

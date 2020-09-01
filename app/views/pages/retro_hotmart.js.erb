@@ -1,0 +1,6 @@
+<% unless @leads.blank? %>
+	$("#list_retro_hotmart").html("<%= j( render 'list_retro_hotmart'  )%>").addClass("animated fadeIn");
+	M.toast({html: '<%= @leads.size %> resultados', classes: 'green'});
+<% else %>
+	M.toast({html: 'Nenhum resultado', classes: 'orange'});
+<% end %>

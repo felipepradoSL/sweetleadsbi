@@ -1,0 +1,7 @@
+<% unless @leads.blank? %>
+	$("#list_leads_adwords").html("<%= j( render 'list_leads_adwords'  )%>").addClass("animated fadeIn");
+	M.toast({html: '<%= @leads.size %> resultados', classes: 'green'});
+<% else %>
+	M.toast({html: 'Nenhum resultado', classes: 'orange'});
+<% end %>
+$('table').excelTableFilter();

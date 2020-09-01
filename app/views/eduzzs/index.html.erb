@@ -1,0 +1,136 @@
+<div class="container-fluid no-margin-top no-padding-top">
+  <div class="card">
+    <div class="card-content">
+      <div class="row">
+        <h5 class="blue-text">Eduzz</h5>
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l2">
+          <div class="input-field">
+            <input id="inicio" type="text" class="validate datepicker" onkeypress="mascara(this, checaData);" maxlength="10" value="<%= l Date.today, format: :default %>">
+            <label class="active" for="inicio">Início</label>
+          </div>
+        </div>
+        <div class="col s12 m12 l2">
+          <div class="input-field">
+            <input id="fim" type="text" class="validate datepicker" onkeypress="mascara(this, checaData);" maxlength="10" value="<%= l Date.today, format: :default %>">
+            <label class="active" for="fim">Fim</label>
+          </div>
+        </div>
+        <div class="col s12 m12 l6">
+          <div class="row">
+            <div class="col s12 m12 l4 tooltipped" data-tooltip="Filtrar dos últimos 30 dias">
+              <label>
+                <input id="normal" type="radio" class="with-gap" name="filter_date_group" />
+                <span>30 Dias</span>
+              </label>
+            </div>
+            <div class="col s12 m12 l4 tooltipped" data-tooltip="Filtrar somente de hoje">
+              <label>
+                <input id="hoje" type="radio" class="with-gap" name="filter_date_group" checked />
+                <span>Hoje</span>
+              </label>
+            </div>
+            <div class="col s12 m12 l4 tooltipped" data-tooltip="Filtrar todos os">
+              <label>
+                <input id="full" type="radio" class="with-gap" name="filter_date_group" <%= 'checked' if params[:full] == "true" %> />
+                <span>Full</span>
+              </label>
+            </div>
+            <div class="col s12 m12 l4 tooltipped" data-tooltip="Filtrar do mês atual">
+              <label>
+                <input id="mes_atual" type="radio" class="with-gap" name="filter_date_group"  />
+                <span>Mês Atual</span>
+              </label>
+            </div>
+            <div class="col s12 m12 l4 tooltipped" data-tooltip="Filtrar do mês passado">
+              <label>
+                <input id="mes_passado" type="radio" class="with-gap" name="filter_date_group" />
+                <span>Mês Passado</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m12 l2">
+          <a id="buscar" class="btn shadow green">Buscar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-content">
+      <div id="list">
+        <%= render "list" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+  $("#buscar").click(function(){
+    var inicio = $("#inicio").val();
+    var fim = $("#fim").val();
+    $.ajax({
+      url: "/eduzzs",
+      method: "get",
+      dataType: "script",
+      data: {
+        'start':       inicio,
+        'end':     fim
+      }
+    });
+  });
+$("input").keypress(function() {
+    if (event.which == 13) $("a#buscar").trigger( "click" )
+});
+
+$("#hoje").click(function(){
+
+  if($(this).is(":checked")){
+    $("#inicio").val("<%= l Date.today, format: :default %>");
+    $("#fim").val("<%= l Date.today, format: :default %>");
+  }
+
+});
+
+$("#full").click(function(){
+
+  if($(this).is(":checked")){
+    $("#inicio").val("<%= l Date.today-5.year, format: :default %>");
+    $("#fim").val("<%= l Date.today+5.year, format: :default %>");
+  }
+
+});
+
+$("#normal").click(function(){
+
+  if($(this).is(":checked")){
+    $("#inicio").val("<%= l Date.today-30.day, format: :default %>");
+    $("#fim").val("<%= l Date.today, format: :default %>");
+  }
+});
+
+$("#mes_atual").click(function(){
+
+  if($(this).is(":checked")){
+    $("#inicio").val("<%= l Date.today.beginning_of_month.to_date, format: :default %>");
+    $("#fim").val("<%= l Date.today.end_of_month, format: :default %>");
+  }
+
+});
+
+$("#mes_passado").click(function(){
+
+  if($(this).is(":checked")){
+    $("#inicio").val("<%= l (Date.today-1.month).beginning_of_month.to_date, format: :default %>");
+    $("#fim").val("<%= l (Date.today-1.month).end_of_month, format: :default %>");
+  }
+
+});
+
+
+</script>

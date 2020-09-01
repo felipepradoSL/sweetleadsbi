@@ -1,0 +1,44 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Adwords") do |sheet|
+
+  title = sheet.styles.add_style( :border=>Axlsx::STYLE_THIN_BORDER,
+                                  :alignment=>{:horizontal => :center},
+                                  :sz => 12,
+                                  :b => true)
+  rows = sheet.styles.add_style(:border=>Axlsx::STYLE_THIN_BORDER)
+
+  # Cabeçalho
+  sheet.add_row ["Adwords - Expotardo: #{I18n.l(Time.now, format: :short)}"], style: [title]
+  sheet.merge_cells("A1:H1")
+
+
+  sheet.add_row [
+                    'customer_id',
+                    'date',
+                    'campaign_name',
+                    'campaign_id',
+                    'account_description_name',
+                    'clicks',
+                    'impressions',
+                    'cost',
+                    'conversions',
+                    'conversions_value',
+                    'updated_at',
+                ], style: Array.new(11){ |i| title }
+
+  @adwords.each do |googlead|
+    sheet.add_row [
+                    googlead.customer_id,
+                    googlead.date,
+                    googlead.campaign_name,
+                    googlead.campaign_id,
+                    googlead.account_description_name,
+                    googlead.clicks,
+                    googlead.impressions,
+                    googlead.cost,
+                    googlead.conversions,
+                    googlead.conversions_value,
+                    googlead.updated_at.to_date
+                  ], style: Array.new(11){ |i| rows }
+  end
+end

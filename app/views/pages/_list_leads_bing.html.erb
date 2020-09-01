@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+        <th>Date</th>
+        <th>Camp. Id</th>
+        <th>Campaign</th>
+        <th>Clicks</th>
+        <th>Impressions</th>
+        <th>Cost</th>
+        <th>Conversions</th>
+        <th>Conversions Rate</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leads.each do |lead| %>
+      <tr>
+        <td><%= lead.date %></td>
+        <td><%= "#{lead.campaign_id}" %></td>
+        <td class="tooltipped" data-tooltip="<%= lead.campaign_name %>"><%= "#{lead.campaign_name}" %> </td>
+        <td><%= lead.clicks %></td>
+        <td><%= lead.impressions %></td>
+        <td><%= lead.cost %></td>
+        <td><%= lead.conversions %></td>
+        <td><%= lead.conversion_rate %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,2 @@
+class RetroHotmart < ApplicationRecord
+end

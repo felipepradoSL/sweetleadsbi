@@ -1,0 +1,62 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Bing") do |sheet|
+
+  title = sheet.styles.add_style( :border=>Axlsx::STYLE_THIN_BORDER,
+                                  :alignment=>{:horizontal => :center},
+                                  :sz => 12,
+                                  :b => true)
+  rows = sheet.styles.add_style(:border=>Axlsx::STYLE_THIN_BORDER)
+
+  # Cabeçalho
+  sheet.add_row ["Bing - Expotardo: #{I18n.l(Time.now, format: :short)}"], style: [title]
+  sheet.merge_cells("A1:H1")
+
+
+  sheet.add_row [
+                    'date',
+                    'average_cpc',
+                    'average_cpm',
+                    'average_position',
+                    'campaign_name',
+                    'campaign_id',
+                    'bidding_strategy_type',
+                    'budget',
+                    'click_conversion_rate',
+                    'clicks',
+                    'conversion_rate',
+                    'conversions',
+                    'converted_clicks',
+                    'cost',
+                    'ctr',
+                    'impressions',
+                    'return_on_ad_spend',
+                    'revenue',
+                    'created_at',
+                    'updated_at',
+                ], style: Array.new(11){ |i| title }
+
+  @adwords.each do |googlead|
+    sheet.add_row [
+                    googlead.date,
+                    googlead.average_cpc,
+                    googlead.average_cpm,
+                    googlead.average_position,
+                    googlead.campaign_name,
+                    googlead.campaign_id,
+                    googlead.bidding_strategy_type,
+                    googlead.budget,
+                    googlead.click_conversion_rate,
+                    googlead.clicks,
+                    googlead.conversion_rate,
+                    googlead.conversions,
+                    googlead.converted_clicks,
+                    googlead.cost,
+                    googlead.ctr,
+                    googlead.impressions,
+                    googlead.return_on_ad_spend,
+                    googlead.revenue,
+                    googlead.created_at.to_date,
+                    googlead.updated_at.to_date
+                  ], style: Array.new(11){ |i| rows }
+  end
+end

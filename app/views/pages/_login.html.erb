@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-image center waves-effect waves-block waves-light">
+    <br><span class="subtitle span">
+      Seja bem vindo. <br>
+      Digite seu e-mail e senha para iniciar.
+    </span>
+  </div>
+  <div class="card-content">
+    <div class="layout claro">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, class: "email" %>
+        </div>
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, class: "password"  %>
+        </div>
+        <br>
+        <div class="actions">
+          <%= f.submit "Entrar", class: "btn shadow green"  %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <div class="card-reveal">
+  <div class="card-image center waves-effect waves-block waves-light">
+    <a class="brand-logo logo orange-text">Sweet Leads</a> <br>
+  </div>
+      <span class="card-title orange-text ">Esqueceu a senha?<i class="material-icons right">close</i></span>
+    <div class="layout claro border-blue">
+      <br>
+      <br>
+      <span class="card-subtitle">Entre com seu e-mail e enviaremos um link para recuperação.</span>
+      <br>
+      <div class="field">
+        <input type="text" name="" class="email">
+        <label>E-mail</label>
+      </div>
+      <br>
+      <div class="field">
+        <a class="btn shadow orange right">Enviar</a>
+      </div>
+    </div>
+  </div>
+</div>

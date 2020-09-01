@@ -1,0 +1,2 @@
+class Hotmart < ApplicationRecord
+end

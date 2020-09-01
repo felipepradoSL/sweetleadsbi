@@ -1,0 +1,144 @@
+
+      <table>
+        <thead>
+          <tr>
+            <th> prod</th>
+            <th> prod_name</th>
+            <th> off</th>
+            <th> price</th>
+            <th> aff</th>
+            <th> aff_name</th>
+            <th> email</th>
+            <th> name</th>
+            <th> first_name</th>
+            <th> last_name</th>
+            <th> doc</th>
+            <th> phone_local_code</th>
+            <th> phone_number</th>
+            <th> phone_checkout_local_code</th>
+            <th> phone_checkout_number</th>
+            <th> address</th>
+            <th> address_number</th>
+            <th> address_country</th>
+            <th> address_district</th>
+            <th> address_comp</th>
+            <th> address_city</th>
+            <th> address_state</th>
+            <th> address_zip_code</th>
+            <th> transactionn</th>
+            <th> xcod</th>
+            <th> src</th>
+            <th> status</th>
+            <th> payment_engine</th>
+            <th> payment_type</th>
+            <th> hotkey</th>
+            <th> name_subscription_plan</th>
+            <th> subscriber_code</th>
+            <th> recurrency_period</th>
+            <th> recurrency</th>
+            <th> cms_marketplace</th>
+            <th> cms_vendor</th>
+            <th> cms_aff</th>
+            <th> coupon_code</th>
+            <th> callback_type</th>
+            <th> subscription_status</th>
+            <th> transaction_ext</th>
+            <th> sck</th>
+            <th> purchase_date</th>
+            <th> confirmation_purchase_date</th>
+            <th> billet_url</th>
+            <th> currency_code_from</th>
+            <th> original_offer_price</th>
+            <th> currency</th>
+            <th> billet_barcode</th>
+            <th> producer_name</th>
+            <th> producer_document</th>
+            <th> producer_legal_nature</th>
+            <th> currency_code_from_</th>
+            <th> refusal_reason</th>
+            <th> doc_type</th>
+            <th> full_price</th>
+            <th> warranty_date</th>
+            <th> cms_aff_currency</th>
+            <th> product_support_email</th>
+            <th> amount</th>
+            <th> affiliate</th>
+            <th> productName</th>
+            <th> productUcode</th>
+            <th> productCategory</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @hotmarts.each do |hotmart| %>
+            <tr>
+              <td><%=  hotmart.prod %></td>
+              <td><%=  hotmart.prod_name %></td>
+              <td><%=  hotmart.off %></td>
+              <td><%=  hotmart.price %></td>
+              <td><%=  hotmart.aff %></td>
+              <td><%=  hotmart.aff_name %></td>
+              <td><%=  hotmart.email %></td>
+              <td><%=  hotmart.name %></td>
+              <td><%=  hotmart.first_name %></td>
+              <td><%=  hotmart.last_name %></td>
+              <td><%=  hotmart.doc %></td>
+              <td><%=  hotmart.phone_local_code %></td>
+              <td><%=  hotmart.phone_number %></td>
+              <td><%=  hotmart.phone_checkout_local_code %></td>
+              <td><%=  hotmart.phone_checkout_number %></td>
+              <td><%=  hotmart.address %></td>
+              <td><%=  hotmart.address_number %></td>
+              <td><%=  hotmart.address_country %></td>
+              <td><%=  hotmart.address_district %></td>
+              <td><%=  hotmart.address_comp %></td>
+              <td><%=  hotmart.address_city %></td>
+              <td><%=  hotmart.address_state %></td>
+              <td><%=  hotmart.address_zip_code %></td>
+              <td><%=  hotmart.transactionn %></td>
+              <td><%=  hotmart.xcod %></td>
+              <td><%=  hotmart.src %></td>
+              <td><%=  hotmart.status %></td>
+              <td><%=  hotmart.payment_engine %></td>
+              <td><%=  hotmart.payment_type %></td>
+              <td><%=  hotmart.hotkey %></td>
+              <td><%=  hotmart.name_subscription_plan %></td>
+              <td><%=  hotmart.subscriber_code %></td>
+              <td><%=  hotmart.recurrency_period %></td>
+              <td><%=  hotmart.recurrency %></td>
+              <td><%=  hotmart.cms_marketplace %></td>
+              <td><%=  hotmart.cms_vendor %></td>
+              <td><%=  hotmart.cms_aff %></td>
+              <td><%=  hotmart.coupon_code %></td>
+              <td><%=  hotmart.callback_type %></td>
+              <td><%=  hotmart.subscription_status %></td>
+              <td><%=  hotmart.transaction_ext %></td>
+              <td><%=  hotmart.sck %></td>
+              <td><%=  hotmart.purchase_date %></td>
+              <td><%=  hotmart.confirmation_purchase_date %></td>
+              <td><%=  hotmart.billet_url %></td>
+              <td><%=  hotmart.currency_code_from %></td>
+              <td><%=  hotmart.original_offer_price %></td>
+              <td><%=  hotmart.currency %></td>
+              <td><%=  hotmart.billet_barcode %></td>
+              <td><%=  hotmart.producer_name %></td>
+              <td><%=  hotmart.producer_document %></td>
+              <td><%=  hotmart.producer_legal_nature %></td>
+              <td><%=  hotmart.currency_code_from_ %></td>
+              <td><%=  hotmart.refusal_reason %></td>
+              <td><%=  hotmart.doc_type %></td>
+              <td><%=  hotmart.full_price %></td>
+              <td><%=  hotmart.warranty_date %></td>
+              <td><%=  hotmart.cms_aff_currency %></td>
+              <td><%=  hotmart.product_support_email %></td>
+              <td><%=  hotmart.amount %></td>
+              <td><%=  hotmart.affiliate %></td>
+              <td><%=  hotmart.productName %></td>
+              <td><%=  hotmart.productUcode %></td>
+              <td><%=  hotmart.productCategory %></td>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>

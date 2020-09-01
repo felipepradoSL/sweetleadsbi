@@ -1,0 +1,36 @@
+body.sessions, .pages{
+
+	&.public{
+		background-image: url("/images/public_background.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+
+	nav{
+		background: #ddd;
+		opacity: 0.89;
+
+		div.nav-wrapper{
+
+			ul{
+
+				li{
+					i, a, strong, p, span, button{
+						color: #1565c0;
+						transition: .5s;
+						font-weight: 500;
+						font-size: 18px;
+
+					}
+				}
+			}
+		}
+	}
+
+
+
+	.home-content{
+
+	}
+}

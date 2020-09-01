@@ -1,0 +1,154 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col s12 m12 l2">
+			<a id="credenciais" class="btn shadow blue">Att Credenciais</a>
+		</div>
+		<div class="col s12 m12 l2">
+			<a id="dados" class="btn shadow blue">Att Dados</a>
+		</div>
+		<div class="col s12 m12 l2">
+			<%= link_to "Att Assíncrono", att_hotmart_async_path, class: "btn shadow purple", remote: true, method: "post" %>
+		</div>
+	    <div class="col s12 m12 l2">
+	      <div class="input-field">
+	        <input id="start" type="text" class="validate" maxlength="10" value="<%= l Date.today.beginning_of_month, format: :default %>">
+	        <label class="active" for="start">Início</label>
+	      </div>
+	    </div>
+	    <div class="col s12 m12 l2">
+	      <div class="input-field">
+	        <input id="end" type="text" class="validate" maxlength="10" value="<%= l Date.today, format: :default %>">
+	        <label class="active" for="end">Fim</label>
+	      </div>
+	    </div>
+	</div>
+	<div class="row">
+		<span class="span">Resposta</span>
+		<div class="card">
+			<div class="card-content overflow-x-auto">
+				<span class="span">
+					<%= "1 -> #{Setting.token_one}".html_safe %>
+				</span><br><br>
+				<span class="span">
+					<%= "2 -> #{Setting.token_two}".html_safe %>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+	$("#credenciais").click(function(){
+		$.ajax({
+			url: "https://api-sec-vlc.hotmart.com/security/oauth/token?grant_type=client_credentials&client_id=d9094a63-512a-41c2-b4d5-b079adb0f70e&client_secret=81fdbe11-6793-4bcc-a8a6-ad9ec7dfec6d",
+		    headers: {
+		        'Authorization':'Basic ZDkwOTRhNjMtNTEyYS00MWMyLWI0ZDUtYjA3OWFkYjBmNzBlOjgxZmRiZTExLTY3OTMtNGJjYy1hOGE2LWFkOWVjN2RmZWM2ZA=='
+		    },
+			method: "POST",
+			success: function(e) {
+				$.ajax({
+					url: "/get_token",
+					method: "post",
+      				dataType: "script",
+					data: {
+						'token_one': e[Object.keys(e)[0]]
+					}
+				});
+				console.log(e)
+				
+			},
+			error: function(e) {
+				return M.toast({html: 'Não foi possível fazer a requisição.', classes: 'red'});
+			}
+		});
+
+		$.ajax({
+			url: "https://api-sec-vlc.hotmart.com/security/oauth/token?grant_type=client_credentials&client_id=fa819c71-17a0-4af4-ad88-08f2a7af0f73&client_secret=f3bb88ca-0e65-4b7c-b870-3f5c846bb16a",
+		    headers: {
+		        'Authorization':'Basic ZmE4MTljNzEtMTdhMC00YWY0LWFkODgtMDhmMmE3YWYwZjczOmYzYmI4OGNhLTBlNjUtNGI3Yy1iODcwLTNmNWM4NDZiYjE2YQ=='
+		    },
+			method: "POST",
+			success: function(e) {
+				$.ajax({
+					url: "/get_token",
+					method: "post",
+      				dataType: "script",
+					data: {
+						'token_two': e[Object.keys(e)[0]]
+					}
+				});
+				console.log(e)
+				
+			},
+			error: function(e) {
+				return M.toast({html: 'Não foi possível fazer a requisição.', classes: 'red'});
+			}
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$("#dados").click(function(){
+
+		var start 	= new Date($("#start").val().split("/").reverse().join('-')).getTime();
+		var end 	= new Date($("#end").val().split("/").reverse().join('-')).getTime();
+
+		$.ajax({
+			url: "https://api-hot-connect.hotmart.com/reports/rest/v2/history",
+		    headers: {
+		        'Authorization':'Bearer <%= Setting.token_one %>'
+		    },
+			method: "get",
+			data: {
+				'startDate': start,
+				'endDate': end,
+				'rows': 5000
+			},
+			success: function(e) {
+				$.ajax({
+					url: "/att_hotmart",
+					method: "post",
+      				dataType: "script",
+					data: {
+						'data': e
+					}
+				});
+				console.log(e)
+			},
+			error: function(e) {
+				return M.toast({html: 'Não foi possível fazer a requisição.', classes: 'red'});
+			}
+		});
+
+		$.ajax({
+			url: "https://api-hot-connect.hotmart.com/reports/rest/v2/history",
+		    headers: {
+		        'Authorization':'Bearer <%= Setting.token_two %>'
+		    },
+			method: "get",
+			data: {
+				'startDate': start,
+				'endDate': end,
+				'rows': 5000
+			},
+			success: function(e) {
+				$.ajax({
+					url: "/att_hotmart",
+					method: "post",
+      				dataType: "script",
+					data: {
+						'data': e
+					}
+				});
+				console.log(e)
+			},
+			error: function(e) {
+				return M.toast({html: 'Não foi possível fazer a requisição.', classes: 'red'});
+			}
+		});
+	});
+</script>

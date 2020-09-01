@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SweetLeadsBI</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag '/favicon.png' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"></head>
+  </head>
+
+  <body class="<%= controller_name %> <%= action_name %>">
+
+    <header>
+      <%= render "/shared/navbar" %>
+    </header>
+
+    <%= yield %>
+
+    
+    <footer class="no-margin">
+      <%= render "/shared/footer" %>
+    </footer>
+
+    <% flash.each do |message_type, message| %>
+      <% if message_type == 'alert' %>
+        <%= javascript_tag "M.toast({html: '#{message}', classes: 'red'})" %>
+      <% else message_type == 'notice' %>
+        <%= javascript_tag "M.toast({html: '#{message}', classes: 'green'})" %>
+      <% end %>
+    <% end %>
+  </body>
+</html>
+
+
+
+
+<script type="text/javascript">
+  $(function() {
+
+
+    $(document).ajaxStart(function() {
+      $('.logo').addClass("animated flip infinite")
+    });
+
+    $(document).ajaxStop(function() {
+      $('.logo').removeClass("animated flip infinite")
+    });
+
+  });
+
+  $(document).ready(function(){
+   $('.logo').removeClass("animated flip infinite")
+   $(".load-ajax").fadeOut("slow");
+ });
+</script>
